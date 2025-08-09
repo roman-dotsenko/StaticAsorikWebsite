@@ -20,6 +20,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        
+      - name: Ensure images folder exists
+        run: |
+          if [ ! -d "images" ]; then
+            echo "ERROR: images/ folder is missing!" >&2
+            exit 1
+          fi
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
