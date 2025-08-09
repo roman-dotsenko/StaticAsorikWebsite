@@ -101,6 +101,9 @@
     font-weight: 600;
     transition: opacity 0.3s;
     text-decoration: none;
+    /* Prevent line breaks and allow the button to overflow when space is limited */
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .contact-link:hover {
