@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom Styles & Tailwind Config -->
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/projects.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/header.css"><!-- keep header.css last -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css"><!-- keep header.css last -->
 </head>
 <body class="antialiased">
 
@@ -72,16 +72,16 @@
         </div>
     </div>
 
-    <script src="../js/header.js"></script>
-    <script src="../js/animations.js"></script>
-    <script src="../js/projects.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/projects.js"></script>
     <script>
       // Load global site info and projects
       document.addEventListener('DOMContentLoaded', async () => {
         try {
           const [siteRes, projectsRes] = await Promise.all([
-            fetch('../data/site.json', { cache: 'no-cache' }),
-            fetch('../data/projects.json', { cache: 'no-cache' })
+            fetch('data/site.json', { cache: 'no-cache' }),
+            fetch('data/projects.json', { cache: 'no-cache' })
           ]);
           if (!siteRes.ok) throw new Error('Failed to load site.json');
           if (!projectsRes.ok) throw new Error('Failed to load projects.json');
