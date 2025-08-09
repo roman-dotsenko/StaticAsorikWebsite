@@ -1,0 +1,23 @@
+{
+  "name": "asorikwebsite",
+  "version": "1.0.0",
+  "description": "Simple static website.",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roman-dotsenko/StaticAsorikWebsite.git"
+  },
+  "author": "Roman Dotsenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roman-dotsenko/StaticAsorikWebsite/issues"
+  },
+  "homepage": "https://github.com/roman-dotsenko/StaticAsorikWebsite#readme"
+}

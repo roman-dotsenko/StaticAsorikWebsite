@@ -29,7 +29,7 @@ function send(res, status, data, headers = {}) {
 const server = http.createServer((req, res) => {
   try {
     let urlPath = decodeURI(req.url.split('?')[0]);
-    if (urlPath === '/' || urlPath === '') urlPath = '/html/main-glass.html';
+    if (urlPath === '/' || urlPath === '') urlPath = '/index.html';
 
     // Prevent path traversal
     const safeSuffix = path.normalize(urlPath).replace(/^\/+/, '');
