@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "title": "Covenant: Project Zero",
+      "image": "images/projects/covenant.jpg",
+      "description": "Covenant: Project Zero is a space opera set in a universe where interstellar corporations and big money interests run everything. Embark on an action-packed adventure as Captain John Covenant, accompanied by a band of rag-tag misfits, to confront the dark evil lurking in the universe. I developed this game using Unity and C#, focusing on the core gameplay mechanics, character interactions, and the overall game design. The project involved extensive use of Unity's features for graphics, physics, and audio to create an immersive gaming experience.",
+      "tags": ["Unity", "C#", ".NET", "Steam Integration", "Multiplatform porting"],
+      "liveUrl": "https://store.steampowered.com/app/2207500/Covenant_Project_Zero/",
+      "githubUrl": ""
+    },
+    {
+      "title": "Warplace",
+      "image": "images/projects/warplace.jpg",
+      "description": "Warplace is a competitive multiplayer game that pits players against each other in a battle for supremacy. Utilize a variety of buildings, units, spells and tactics to outsmart your opponents and claim victory. I was responsible for porting the game to multiple platforms, including iOS and Android, ensuring a smooth and consistent gameplay experience across devices. This involved optimizing the game for performance, adapting controls for touch interfaces, and integrating platform-specific features such as Firebase for real-time multiplayer functionality.",
+      "tags": ["Unity", "C#", ".NET", "Multiplatform porting", "Firebase"],
+      "liveUrl": "https://www.instagram.com/warplaceofficial/?hl=en",
+      "githubUrl": ""
+    },
+    {
+      "title": "Fastned",
+      "image": "images/projects/fastned.png",
+      "description": "Fastned is a project focused on providing fast and reliable charging solutions for electric vehicles. The goal is to make EV charging as convenient as refueling a gasoline car. My role involved in the development of the backend of the Fastned website. This included working with Umbraco CMS to create and manage content, as well as integrating various APIs to enhance functionality. The project also involved optimizing the website for performance and scalability.",
+      "tags": [".NET", "C#", "Umbraco", "Azure", "SQL"],
+      "liveUrl": "https://www.fastnedcharging.com/en",
+      "githubUrl": ""
+    },
+    {
+      "title": "VvAA",
+      "image": "images/projects/vvaa.png",
+      "description": "VvAA is a Dutch insurance company that provides services to healthcare professionals. I contributed to the development of their website, focusing on enhancing user experience and functionality. This involved working with Umbraco CMS and integrating new and improved insurance forms. Worked with the client and third party services to ensure seamless integration and functionality.",
+      "tags": [".NET", "C#", "Umbraco Cloud", "Umbraco Heartcore", "Azure", "SQL"],
+      "liveUrl": "https://www.vvaa.nl/",
+      "githubUrl": ""
+    },
+        {
+      "title": "Artis",
+      "image": "images/projects/artis.png",
+      "description": "Artis is a Dutch zoo located in Amsterdam. I contributed to the development of their website, focusing on enhancing user experience and functionality. This involved working with Umbraco CMS and integrating new and improved features for visitors. I also worked on optimizing the website for performance and ensuring it was mobile-friendly. This project required close collaboration with the Artis team to understand their needs and implement solutions that met their requirements.",
+      "tags": [".NET", "C#", "Umbraco", "Azure", "SQL"],
+      "liveUrl": "https://www.artis.nl/",
+      "githubUrl": ""
+    }
+  ]
+}

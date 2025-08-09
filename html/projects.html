@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Projects</title>
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles & Tailwind Config -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/projects.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css"><!-- keep header.css last -->
+</head>
+<body class="antialiased">
+
+    <header class="header">
+        <div class="header-container glass-panel">
+            <div class="header-content">
+                <a href="/" id="home-link-logo" class="logo">John Doe</a>
+                <nav class="nav-desktop">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="mailto:your.email@example.com" class="contact-link" id="contact-email">Contact Me</a>
+                </nav>
+                <div id="mobile-menu" class="nav-mobile hidden">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="mailto:your.email@example.com" class="nav-link" id="mobile-contact-email">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <div class="projects-container">
+                <h1 class="projects-title" id="projects-title">My Portfolio</h1>
+                <p class="projects-subtitle" id="projects-subtitle">A showcase of my technical projects and solutions.</p>
+                
+                <div id="project-list" class="project-list">
+                    <!-- Project cards will be populated from JSON -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="footer-year">2024</span> <span id="footer-author"></span>.
+    </footer>
+
+    <div id="project-modal" class="project-modal">
+        <div id="modal-content" class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title">Project Title</h2>
+                <button id="close-modal" class="modal-close-button" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="Project Image" class="modal-image">
+                
+                <h3 class="modal-section-title accent-color">Project Overview</h3>
+                <p id="modal-description" class="modal-description"></p>
+                
+                <h3 class="modal-section-title accent-color">Tech Stack</h3>
+                <div id="modal-tags" class="modal-tags"></div>
+                
+                <div id="modal-links" class="modal-links"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/header.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/projects.js"></script>
+    <script>
+      // Load global site info and projects
+      document.addEventListener('DOMContentLoaded', async () => {
+        try {
+          const [siteRes, projectsRes] = await Promise.all([
+            fetch('../data/site.json', { cache: 'no-cache' }),
+            fetch('../data/projects.json', { cache: 'no-cache' })
+          ]);
+          if (!siteRes.ok) throw new Error('Failed to load site.json');
+          if (!projectsRes.ok) throw new Error('Failed to load projects.json');
+          const siteData = await siteRes.json();
+          const { projects } = await projectsRes.json();
+
+          // Header from site.json
+          const logoEl = document.getElementById('home-link-logo');
+          if (logoEl && siteData.site?.author) logoEl.textContent = siteData.site.author;
+          const contactDesktop = document.getElementById('contact-email');
+          const contactMobile = document.getElementById('mobile-contact-email');
+          if (siteData.site?.email) {
+            if (contactDesktop) contactDesktop.href = `mailto:${siteData.site.email}`;
+            if (contactMobile) contactMobile.href = `mailto:${siteData.site.email}`;
+          }
+
+          // Footer
+          const yearEl = document.getElementById('footer-year');
+          const authorEl = document.getElementById('footer-author');
+          if (yearEl) yearEl.textContent = siteData.site?.year ?? new Date().getFullYear();
+          if (authorEl) authorEl.textContent = siteData.site?.author ?? 'John Doe';
+
+          // Page titles
+          const pTitle = document.getElementById('projects-title');
+          const pSubtitle = document.getElementById('projects-subtitle');
+          if (pTitle && siteData.projects?.title) pTitle.textContent = siteData.projects.title;
+          if (pSubtitle && siteData.projects?.subtitle) pSubtitle.textContent = siteData.projects.subtitle;
+
+          // Render projects
+          const list = document.getElementById('project-list');
+          if (list && Array.isArray(projects)) {
+            list.innerHTML = projects.map((p, idx) => `
+              <div class=\"project-card glass-panel\" 
+                   data-title=\"${p.title}\" 
+                   data-image=\"${p.image}\" 
+                   data-description=\"${(p.description || '').replace(/\"/g, '&quot;')}\" 
+                   data-tags=\"${(p.tags || []).join(',')}\" 
+                   data-live-url=\"${p.liveUrl || '#'}\" 
+                   data-github-url=\"${p.githubUrl || '#'}\"
+                   style=\"transition-delay: ${idx * 100}ms\">
+                <img src=\"${p.image}\" alt=\"${p.title}\" class=\"project-card-image\" loading=\"lazy\">
+                <div class=\"project-card-content\">
+                  <h3 class=\"project-card-title\">${p.title}</h3>
+                  <div class=\"project-card-tags\">
+                    ${(p.tags || []).slice(0, 3).map(t => `<span class=\\"project-card-tag\\">${t}</span>`).join('')}
+                  </div>
+                </div>
+              </div>
+            `).join('');
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* Core Competencies Section */
+.competencies-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.competencies-container {
+    max-width: 64rem; /* 1024px */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+}
+
+.competencies-title {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem; /* 48px */
+    color: #ffffff;
+}
+
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem; /* 32px */
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .competencies-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .competencies-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
+
+.competency-card {
+    padding: 1.5rem; /* 24px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.competency-name {
+    font-weight: 600;
+    font-size: 1.125rem; /* 18px */
+    color: #ffffff;
+}

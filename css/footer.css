@@ -1,0 +1,8 @@
+/* Footer */
+.footer {
+    margin-top: 5rem; /* 80px */
+    padding-top: 1.5rem; /* 24px */
+    padding-bottom: 1.5rem; /* 24px */
+    text-align: center;
+    color: #9ca3af; /* gray-400 */
+}

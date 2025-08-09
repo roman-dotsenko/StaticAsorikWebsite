@@ -1,0 +1,27 @@
+{
+  "site": {
+    "author": "Roman Dotsenko",
+    "year": 2025,
+    "email": "roma.dotsenko@gmail.com"
+  },
+  "home": {
+    "title": "Building the Future\nwith <span class=\"accent-color\">.NET</span>.",
+    "subtitle": "I'm Roman Dotsenko, a .NET Engineer creating robust, scalable, and elegant solutions for the modern web.",
+    "ctaPrimary": { "text": "Explore My Work", "href": "projects.html" },
+    "ctaSecondary": { "text": "My CV", "href": "docs/Roman_Dotsenko_CV.pdf", "download": true, "filename": "Roman_Dotsenko_CV.pdf" },
+    "profileImage": "images/profile.jpg",
+    "competenciesTitle": "Core Competencies",
+    "skills": [
+      { "name": "C# & .NET", "icon": "images/skills/dotnet.webp" },
+      { "name": "Umbraco", "icon": "images/skills/umbraco.jpeg" },
+      { "name": "Python", "icon": "images/skills/python.svg" },
+      { "name": "Azure", "icon": "images/skills/azure.svg" },
+      { "name": "SQL", "icon": "images/skills/sql.svg" },
+      { "name": "Unity", "icon": "images/skills/unity-logo.png" }
+    ]
+  },
+  "projects": {
+    "title": "My Portfolio",
+    "subtitle": "A showcase of my technical projects and solutions."
+  }
+}

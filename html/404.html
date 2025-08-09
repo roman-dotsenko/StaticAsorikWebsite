@@ -1,0 +1,83 @@
+ q<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found - 404</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <style>
+    .error-container { min-height: calc(100vh - 160px); display:flex; align-items:center; justify-content:center; }
+    .error-card { max-width: 720px; margin: 0 auto; padding: 2.5rem; text-align:center; }
+    .error-code { font-size: 6rem; font-weight: 900; letter-spacing: -2px; margin: 0 0 0.5rem; }
+    .error-title { font-size: 1.75rem; font-weight: 700; margin: 0 0 1rem; }
+    .error-text { color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+    .error-actions { display:flex; gap: 12px; justify-content:center; flex-wrap:wrap; }
+    .error-btn { display:inline-flex; align-items:center; gap:8px; padding: 0.75rem 1.25rem; border-radius: 0.75rem; font-weight:600; text-decoration:none; transition: transform .15s ease, opacity .2s ease; }
+    .error-btn.primary { background: var(--accent, #38bdf8); color: #0b1020; }
+    .error-btn.secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+    .error-btn:hover { transform: translateY(-1px); opacity: 0.95; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="gradient-bg"></div>
+
+  <header class="header">
+    <div class="header-container glass-panel">
+      <div class="header-content">
+        <a href="/" class="logo" id="header-logo">Roman Dotsenko</a>
+        <nav class="nav-desktop">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/projects" class="nav-link">Projects</a>
+          <a href="mailto:roma.dotsenko@gmail.com" class="contact-link" id="contact-email">Contact Me</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="error-container">
+    <div class="glass-panel error-card">
+      <div class="error-code accent-color">404</div>
+      <h1 class="error-title">Page not found</h1>
+      <p class="error-text">The page you’re looking for doesn’t exist or may have been moved.</p>
+      <div class="error-actions">
+        <a class="error-btn primary" href="/html/main-glass.html">Go Home</a>
+        <a class="error-btn secondary" href="/projects">View Projects</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-author"></span>. Crafted with code.</p>
+  </footer>
+
+  <script>
+    // Header and footer info from site.json
+    (async () => {
+      try {
+        const res = await fetch('../data/site.json');
+        if (!res.ok) throw new Error('site.json');
+        const data = await res.json();
+
+        // Footer
+        const yearEl = document.getElementById('footer-year');
+        const authorEl = document.getElementById('footer-author');
+        if (yearEl) yearEl.textContent = data.site?.year ?? new Date().getFullYear();
+        if (authorEl) authorEl.textContent = data.site?.author ?? '';
+
+        // Header
+        const logoEl = document.getElementById('header-logo');
+        const contactEl = document.getElementById('contact-email');
+        if (logoEl && data.site?.author) logoEl.textContent = data.site.author;
+        if (contactEl && data.site?.email) contactEl.href = `mailto:${data.site.email}`;
+      } catch {}
+    })();
+  </script>
+</body>
+</html>
