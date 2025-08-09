@@ -9,11 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Custom Styles & Tailwind Config -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/projects.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/header.css"><!-- keep header.css last -->
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body class="antialiased">
 
@@ -40,7 +39,6 @@
                 <p class="projects-subtitle" id="projects-subtitle">A showcase of my technical projects and solutions.</p>
                 
                 <div id="project-list" class="project-list">
-                    <!-- Project cards will be populated from JSON -->
                 </div>
             </div>
         </section>
@@ -74,7 +72,6 @@
     <script src="js/animations.js"></script>
     <script src="js/projects.js"></script>
     <script>
-      // Load global site info and projects
       document.addEventListener('DOMContentLoaded', async () => {
         try {
           const [siteRes, projectsRes] = await Promise.all([
@@ -108,11 +105,11 @@
           if (pTitle && siteData.projects?.title) pTitle.textContent = siteData.projects.title;
           if (pSubtitle && siteData.projects?.subtitle) pSubtitle.textContent = siteData.projects.subtitle;
 
-          // Render projects
+          // Render projects with fade-in animation
           const list = document.getElementById('project-list');
           if (list && Array.isArray(projects)) {
             list.innerHTML = projects.map((p, idx) => `
-              <div class=\"project-card glass-panel\" 
+              <div class=\"project-card glass-panel fade-in\" 
                    data-title=\"${p.title}\" 
                    data-image=\"${p.image}\" 
                    data-description=\"${(p.description || '').replace(/\"/g, '&quot;')}\" 
@@ -129,6 +126,12 @@
                 </div>
               </div>
             `).join('');
+
+            // Trigger fade-in after DOM update; rely on per-card transition-delay for stagger
+            const cards = list.querySelectorAll('.project-card.fade-in');
+            requestAnimationFrame(() => {
+              cards.forEach(card => card.classList.add('visible'));
+            });
           }
         } catch (e) {
           console.error(e);
