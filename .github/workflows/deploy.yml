@@ -24,6 +24,20 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Prepare static site (.nojekyll and 404)
+        run: |
+          # Ensure GitHub Pages serves files as-is (no Jekyll processing)
+          touch .nojekyll
+          # If a 404 page exists under html/, copy it to root for Pages routing
+          if [ -f html/404.html ] && [ ! -f 404.html ]; then
+            cp html/404.html 404.html
+          fi
+
+      - name: Quick asset check
+        run: |
+          test -d images && echo "images/ directory present" || echo "images/ directory missing"
+          test -f images/profile.jpg && echo "profile.jpg found" || true
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
