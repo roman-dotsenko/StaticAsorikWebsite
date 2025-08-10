@@ -34,7 +34,7 @@
                     <a href="mailto:your.email@example.com" class="contact-link" id="contact-email">Contact Me</a>
                 </nav>
                 <nav id="mobile-menu" class="nav-mobile">
-                    <a href="mailto:your.email@example.com" class="contact-link" id="contact-email" >Contact Me</a>
+                    <a href="mailto:your.email@example.com" class="contact-link" id="contact-email-mobile">Contact Me</a>
                 </nav>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 const email = data.site?.email;
                 if (email) {
                     const contactDesktop = document.getElementById('contact-email');
-                    const contactMobile = document.getElementById('mobile-contact-email');
+                    const contactMobile = document.getElementById('contact-email-mobile');
                     if (contactDesktop) contactDesktop.href = `mailto:${email}`;
                     if (contactMobile) contactMobile.href = `mailto:${email}`;
                 }
